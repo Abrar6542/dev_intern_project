@@ -28,6 +28,13 @@ jobs:
           pip install setuptools==69.5.1
           pip install -r dependencies.txt
 
+      # 🔥 Create required environment variables
+      - name: Create Backend .env file
+        run: |
+          cd backend
+          echo "DJANGO_SECRET_KEY=testkey123" > .env
+          echo "FRONTEND_URL=http://localhost:3000" >> .env
+
       - name: Run Django Check
         run: |
           cd backend
@@ -44,6 +51,12 @@ jobs:
         run: |
           cd frontend
           npm install
+
+      # Create frontend env file
+      - name: Create Frontend .env.local
+        run: |
+          cd frontend
+          echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
 
       - name: Build Frontend
         run: |
