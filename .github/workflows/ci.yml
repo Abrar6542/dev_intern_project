@@ -28,7 +28,7 @@ jobs:
           pip install setuptools==69.5.1
           pip install -r dependencies.txt
 
-      # 🔥 Create required environment variables
+      # Create required environment variables
       - name: Create Backend .env file
         run: |
           cd backend
